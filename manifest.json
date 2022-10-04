@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "version": "1.0.0",
+    
+    "name": "Empty tab with image",
+    "short_name": "Empty tab with image",
+    "description": "Empty tab with image",
+
+    "icons": {},
+
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    },
+
+    "permissions": []
+}
