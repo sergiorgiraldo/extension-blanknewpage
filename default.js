@@ -52,7 +52,7 @@ function updateClock() {
 	let minutes = String(now.getMinutes()).padStart(2, "0");
 	let seconds = String(now.getSeconds()).padStart(2, "0");
 
-	document.getElementById("clock").innerHTML = `${hours}:${minutes}:${seconds}<br/>${now.toLocaleDateString()} `;
+	document.getElementById("clock").innerHTML = `${now.toLocaleDateString()}<br/>${hours}:${minutes}:${seconds} `;
     
     let options = {timeZone: 'America/Los_Angeles', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
     const timeInLA = now.toLocaleString('en-US', options);
@@ -62,6 +62,10 @@ function updateClock() {
     const timeInNY = now.toLocaleString('en-US', options);
     document.getElementById("zones").innerHTML += `<br/>NY: ${timeInNY} `;
 
+    options = {timeZone: 'America/Sao_Paulo', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
+    const timeInSP = now.toLocaleString('en-US', options);
+    document.getElementById("zones").innerHTML += `<br/>SP: ${timeInSP} `;
+    
     options = {timeZone: 'Europe/London', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
     const timeInUCT = now.toLocaleString('en-US', options);
     document.getElementById("zones").innerHTML += `<br/>GMT: ${timeInUCT} `;
@@ -74,9 +78,6 @@ function updateClock() {
     const timeInManilla = now.toLocaleString('en-US', options);
     document.getElementById("zones").innerHTML += `<br/>PH: ${timeInManilla} `;
 
-    options = {timeZone: 'America/Sao_Paulo', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
-    const timeInSP = now.toLocaleString('en-US', options);
-    document.getElementById("zones").innerHTML += `<br/>SP: ${timeInSP} `;
 
 	setTimeout(updateClock, 1000); // Update every second
 }
