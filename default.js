@@ -1,42 +1,110 @@
-    const images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg"];
-    const randomIndex = Math.floor(Math.random() * images.length);
-    const randomImage = images[randomIndex];
-    var element = document.querySelector("html");
-    element.style.backgroundImage = "url(" + randomImage + ")";
-  	element.style.backgroundRepeat = "no-repeat";
-	element.style.backgroundPosition = "center center";
-	element.style.backgroundAttachment = "fixed";  
-	element.style.backgroundSize = "cover";
+function getWeather() {
+	fetch("https://wttr.in/Utrecht?format=%l:+%c+%t(%f)")
+		.then((response) => response.text())
+		.then((data) => {
+			document.getElementById("wthru").innerHTML = data;
+		})
+		.catch((error) => {
+			console.error(error);
+		});
 
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-    if (this.readyState === 4 && this.status === 200) {
-        document.getElementById("wthru").innerHTML = this.responseText;
-    }
-    };
-    xhr.open("GET", "https://wttr.in/Utrecht?format=%l:+%c+%t(%f)");
-    xhr.send();
+	fetch("https://wttr.in/Amsterdam?format=%l:+%c+%t(%f)")
+		.then((response) => response.text())
+		.then((data) => {
+			document.getElementById("wthru").innerHTML += "<br />" + data;
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+}
 
-    const xhr2 = new XMLHttpRequest();
-    xhr2.onreadystatechange = function() {
-    if (this.readyState === 4 && this.status === 200) {
-        document.getElementById("wthra").innerHTML = this.responseText;
-    }
-    };
-    xhr2.open("GET", "https://wttr.in/Amsterdam?format=%l:+%c+%t(%f)");
-    xhr2.send();
+function getImage() {
+	const images = [
+		"1.jpg",
+		"2.jpg",
+		"3.jpg",
+		"4.jpg",
+		"5.jpg",
+		"6.jpg",
+		"7.jpg",
+		"8.jpg",
+		"9.jpg",
+		"10.jpg",
+		"11.jpg",
+		"12.jpg",
+		"13.jpg",
+		"14.jpg",
+		"15.jpg",
+		"16.jpg"
+	];
 
-    function updateClock() {
-        const now = new Date();
-        let hours = String(now.getHours()).padStart(2, '0');
-        let minutes = String(now.getMinutes()).padStart(2, '0');
-        let seconds = String(now.getSeconds()).padStart(2, '0');
-        
-        document.getElementById('clock').innerHTML = `${hours}:${minutes}:${seconds}<br/>${now.toLocaleDateString()} `;
-        
-        setTimeout(updateClock, 1000); // Update every second
-    }
+	const randomIndex = Math.floor(Math.random() * images.length);
+	const randomImage = images[randomIndex];
+
+	let el = document.querySelector("#k");
+	el.src = randomImage;
+}
+
+function updateClock() {
+	const now = new Date();
+
+	let hours = String(now.getHours()).padStart(2, "0");
+	let minutes = String(now.getMinutes()).padStart(2, "0");
+	let seconds = String(now.getSeconds()).padStart(2, "0");
+
+	document.getElementById("clock").innerHTML = `${hours}:${minutes}:${seconds}<br/>${now.toLocaleDateString()} `;
     
-    window.onload = () => {
-        updateClock();
-    };
+    let options = {timeZone: 'America/Los_Angeles', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
+    const timeInLA = now.toLocaleString('en-US', options);
+    document.getElementById("zones").innerHTML = `LA: ${timeInLA} `;
+
+    options = {timeZone: 'America/New_York', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
+    const timeInNY = now.toLocaleString('en-US', options);
+    document.getElementById("zones").innerHTML += `<br/>NY: ${timeInNY} `;
+
+    options = {timeZone: 'Europe/London', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
+    const timeInUCT = now.toLocaleString('en-US', options);
+    document.getElementById("zones").innerHTML += `<br/>GMT: ${timeInUCT} `;
+
+    options = {timeZone: 'Asia/Kolkata', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
+    const timeInMumbai = now.toLocaleString('en-US', options);
+    document.getElementById("zones").innerHTML += `<br/>IN: ${timeInMumbai} `;
+
+    options = {timeZone: 'Asia/Manila', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
+    const timeInManilla = now.toLocaleString('en-US', options);
+    document.getElementById("zones").innerHTML += `<br/>PH: ${timeInManilla} `;
+
+    options = {timeZone: 'America/Sao_Paulo', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
+    const timeInSP = now.toLocaleString('en-US', options);
+    document.getElementById("zones").innerHTML += `<br/>SP: ${timeInSP} `;
+
+	setTimeout(updateClock, 1000); // Update every second
+}
+
+function getQuote() {
+	fetch("./quotes.json")
+		.then((response) => response.json())
+		.then((data) => {
+			const movies = data.movieQuotes;
+			const randomMovie = Math.floor(Math.random() * movies.length);
+			const movie = movies[randomMovie];
+
+			const quotes = movie.quotes;
+			const title = movie.title + " (" + movie.year + ")";
+			const randomQuote = Math.floor(Math.random() * quotes.length);
+			const quote = quotes[randomQuote];
+
+			document.getElementById("title").innerHTML = title;
+			document.getElementById("quote").innerHTML = quote;
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+}
+
+window.onload = () => {
+	getWeather();
+	getQuote();
+	getImage();
+	updateClock();
+};
