@@ -1,5 +1,5 @@
 function getWeather() {
-	fetch("https://wttr.in/Utrecht?format=%l:+%c+%t(%f)")
+	fetch("https://wttr.in/Utrecht?format=%l:+%C+%t(%f)")
 		.then((response) => response.text())
 		.then((data) => {
 			document.getElementById("wthru").innerHTML = data;
@@ -8,7 +8,7 @@ function getWeather() {
 			console.error(error);
 		});
 
-	fetch("https://wttr.in/Amsterdam?format=%l:+%c+%t(%f)")
+	fetch("https://wttr.in/Amsterdam?format=%l:+%C+%t(%f)")
 		.then((response) => response.text())
 		.then((data) => {
 			document.getElementById("wthru").innerHTML += "<br />" + data;
@@ -56,11 +56,11 @@ function updateClock() {
     
     let options = {timeZone: 'America/Los_Angeles', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
     const timeInLA = now.toLocaleString('en-US', options);
-    document.getElementById("zones").innerHTML = `LA: ${timeInLA} `;
+    document.getElementById("zones").innerHTML = `LA: ${timeInLA} |PST`;
 
     options = {timeZone: 'America/New_York', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
     const timeInNY = now.toLocaleString('en-US', options);
-    document.getElementById("zones").innerHTML += `<br/>NY: ${timeInNY} `;
+    document.getElementById("zones").innerHTML += `<br/>NY: ${timeInNY} |EST`;
 
     options = {timeZone: 'America/Sao_Paulo', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
     const timeInSP = now.toLocaleString('en-US', options);
@@ -68,7 +68,7 @@ function updateClock() {
     
     options = {timeZone: 'Europe/London', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
     const timeInUCT = now.toLocaleString('en-US', options);
-    document.getElementById("zones").innerHTML += `<br/>GMT: ${timeInUCT} `;
+    document.getElementById("zones").innerHTML += `<br/>UK: ${timeInUCT} |GMT`;
 
     options = {timeZone: 'Asia/Kolkata', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
     const timeInMumbai = now.toLocaleString('en-US', options);
