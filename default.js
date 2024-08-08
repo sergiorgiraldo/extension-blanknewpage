@@ -35,7 +35,12 @@ function getImage() {
 		"13.jpg",
 		"14.jpg",
 		"15.jpg",
-		"16.jpg"
+		"16.jpg",
+		"17.jpg",
+		"18.jpg",
+		"19.jpg",
+		"20.jpg",
+		"21.jpg"
 	];
 
 	const randomIndex = Math.floor(Math.random() * images.length);
@@ -52,32 +57,69 @@ function updateClock() {
 	let minutes = String(now.getMinutes()).padStart(2, "0");
 	let seconds = String(now.getSeconds()).padStart(2, "0");
 
-	document.getElementById("clock").innerHTML = `${now.toLocaleDateString()}<br/>${hours}:${minutes}:${seconds} `;
-    
-    let options = {timeZone: 'America/Los_Angeles', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
-    const timeInLA = now.toLocaleString('en-US', options);
-    document.getElementById("zones").innerHTML = `LA: ${timeInLA} |PST`;
+	document.getElementById(
+		"clock"
+	).innerHTML = `${now.toLocaleDateString()}<br/>${hours}:${minutes}:${seconds} | CEST`;
 
-    options = {timeZone: 'America/New_York', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
-    const timeInNY = now.toLocaleString('en-US', options);
-    document.getElementById("zones").innerHTML += `<br/>NY: ${timeInNY} |EST`;
+	let options = {
+		timeZone: "America/Los_Angeles",
+		hour12: false,
+		hour: "numeric",
+		minute: "numeric",
+		second: "numeric"
+	};
+	const timeInLA = now.toLocaleString("en-US", options);
+	document.getElementById("zones").innerHTML = `LA: ${timeInLA} | PST`;
 
-    options = {timeZone: 'America/Sao_Paulo', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
-    const timeInSP = now.toLocaleString('en-US', options);
-    document.getElementById("zones").innerHTML += `<br/>SP: ${timeInSP} `;
-    
-    options = {timeZone: 'Europe/London', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
-    const timeInUCT = now.toLocaleString('en-US', options);
-    document.getElementById("zones").innerHTML += `<br/>UK: ${timeInUCT} |GMT`;
+	options = {
+		timeZone: "America/New_York",
+		hour12: false,
+		hour: "numeric",
+		minute: "numeric",
+		second: "numeric"
+	};
+	const timeInNY = now.toLocaleString("en-US", options);
+	document.getElementById("zones").innerHTML += `<br/>NY: ${timeInNY} | EST`;
 
-    options = {timeZone: 'Asia/Kolkata', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
-    const timeInMumbai = now.toLocaleString('en-US', options);
-    document.getElementById("zones").innerHTML += `<br/>IN: ${timeInMumbai} `;
+	options = {
+		timeZone: "America/Sao_Paulo",
+		hour12: false,
+		hour: "numeric",
+		minute: "numeric",
+		second: "numeric"
+	};
+	const timeInSP = now.toLocaleString("en-US", options);
+	document.getElementById("zones").innerHTML += `<br/>SP: ${timeInSP} `;
 
-    options = {timeZone: 'Asia/Manila', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric'};
-    const timeInManilla = now.toLocaleString('en-US', options);
-    document.getElementById("zones").innerHTML += `<br/>PH: ${timeInManilla} `;
+	options = {
+		timeZone: "Europe/London",
+		hour12: false,
+		hour: "numeric",
+		minute: "numeric",
+		second: "numeric"
+	};
+	const timeInUCT = now.toLocaleString("en-US", options);
+	document.getElementById("zones").innerHTML += `<br/>UK: ${timeInUCT} | GMT`;
 
+	options = {
+		timeZone: "Asia/Kolkata",
+		hour12: false,
+		hour: "numeric",
+		minute: "numeric",
+		second: "numeric"
+	};
+	const timeInMumbai = now.toLocaleString("en-US", options);
+	document.getElementById("zones").innerHTML += `<br/>IN: ${timeInMumbai} `;
+
+	options = {
+		timeZone: "Asia/Manila",
+		hour12: false,
+		hour: "numeric",
+		minute: "numeric",
+		second: "numeric"
+	};
+	const timeInManilla = now.toLocaleString("en-US", options);
+	document.getElementById("zones").innerHTML += `<br/>PH: ${timeInManilla} `;
 
 	setTimeout(updateClock, 1000); // Update every second
 }
@@ -103,9 +145,22 @@ function getQuote() {
 		});
 }
 
+function getGuid() {
+	const g = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+		/[xy]/g,
+		function (c) {
+			var r = (Math.random() * 16) | 0,
+				v = c == "x" ? r : (r & 0x3) | 0x8;
+			return v.toString(16);
+		}
+	);
+	document.getElementById("guid").innerHTML = g;
+}
+
 window.onload = () => {
 	getWeather();
 	getQuote();
 	getImage();
 	updateClock();
+	getGuid();
 };

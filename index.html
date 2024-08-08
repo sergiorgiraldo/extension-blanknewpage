@@ -68,6 +68,21 @@
             color:darkseagreen;
             padding-left: 1em;
         }
+        #guid{
+            font-size: 1.5em;
+            font-style: italic;
+            color:darksalmon;
+        }
+        #guid::before {
+            content: "{ ";
+            font-weight: 1000;
+            font-size: 1.7em;
+        }
+        #guid::after {
+            content: " }";
+            font-weight: 1000;
+            font-size: 1.7em;
+        }
     </style>
 </head>
 <body>
@@ -75,6 +90,7 @@
         <div class="column">
             <p id="clock" />
             <p id="zones"></p>
+            <p id="guid"></p>
         </div>
         
         <div class="column middle">
