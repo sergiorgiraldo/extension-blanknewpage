@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+.left { width: 25%; padding: 10px; }
+.middle { width: 45%; display: flex; justify-content: center; align-items: center; }
+.right { width: 30%; padding: 10px; }
+img { max-width: 70%; max-height: 70%; border: 2px solid white; }

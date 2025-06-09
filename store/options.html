@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extension Options</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <h1>Settings</h1>
+    
+    <h3>Manage Timezones</h3>
+    <select id="timezone-select"></select>
+    <button id="add-timezone">Add Timezone</button>
+    <ul id="timezone-list"></ul>
+
+    <h3>Manage Images</h3>
+    <input type="file" id="upload-image">
+    <button id="delete-image">Remove Selected Image</button>
+    <ul id="image-list"></ul>
+
+    <h3>Show GUID</h3>
+    <label>
+        <input type="checkbox" id="toggle-guid">
+        Enable GUID
+    </label>
+
+    <script src="options.js"></script>
+</body>
+</html>
