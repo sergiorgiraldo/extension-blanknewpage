@@ -4,7 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Homepage</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        html body {
+            background: #222233;
+            font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', 'Open Sans Light';
+            color: #AACCFF;
+        }
+        .container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+        .left { width: 25%; padding: 10px; }
+        .middle { width: 45%; display: flex; justify-content: center; align-items: center; }
+        .right { width: 30%; padding: 10px; }
+        img { max-width: 70%; max-height: 70%; border: 2px solid white; }
+    </style>
 </head>
 <body>
     <div class="container">
