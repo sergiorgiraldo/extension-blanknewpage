@@ -1,25 +1,19 @@
 document.getElementById("current-time").innerText = new Date().toLocaleString();
-
 // Load settings from storage
 chrome.storage.local.get(["timezones", "images", "showGUID"], (data) => {
+
     // Timezones
-    const select = document.getElementById("timezone-select");
     const display = document.getElementById("timezone-display");
     
     if (data.timezones) {
         data.timezones.forEach(zone => {
-            let option = document.createElement("option");
-            option.value = zone;
-            option.textContent = zone;
-            select.appendChild(option);
+            let date = new Intl.DateTimeFormat("en-US", { timeZone: zone, timeStyle: "short", hour12: false}).format(new Date());
+            display.textContent += `${zone}: ${date}\r\n`;
         });
-
-        let selectedZone = data.timezones[0] || "UTC"; // Default to UTC
-        let date = new Intl.DateTimeFormat("en-US", { timeZone: selectedZone, timeStyle: "short" }).format(new Date());
-        display.textContent = `${selectedZone}: ${date}`;
     }
     
     // GUID Toggle
+    console.log(data.showGUID);
     const guidContainer = document.getElementById("guid-container");
     guidContainer.style.display = data.showGUID ? "block" : "none";
     guidContainer.innerText = crypto.randomUUID();

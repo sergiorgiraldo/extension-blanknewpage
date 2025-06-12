@@ -7,7 +7,7 @@
     <style>
         html body {
             background: #222233;
-            font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', 'Open Sans Light';
+            font-family: Verdana, Arial;
             color: #AACCFF;
         }
         .container {
@@ -19,13 +19,37 @@
         .middle { width: 45%; display: flex; justify-content: center; align-items: center; }
         .right { width: 30%; padding: 10px; }
         img { max-width: 70%; max-height: 70%; border: 2px solid white; }
+
+        #current-time {
+            font-size: 2.5em;
+            padding-left: 0.5em;
+            margin-bottom: 2em;
+        }
+        #timezone-display{
+            font-size: 1.5em;
+            color:darkseagreen;
+            padding-left: 1em;
+            margin-bottom: 2em;
+            white-space: pre;
+        }
+        #guid-container{
+            font-size: 1.5em;
+            font-style: italic;
+            color:#AACCFF;
+        }
+        #quote {
+            font-size: 1.5em;
+            color:orange;
+            line-height: 1.8;
+            padding-right: 0.3em;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="left">
             <div id="current-time"></div>
-            <select id="timezone-select"></select>
             <div id="timezone-display"></div>
             <div id="guid-container"></div>
         </div>
