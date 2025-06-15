@@ -27,8 +27,8 @@ chrome.storage.local.get(["timezones", "images", "showGUID"], (data) => {
 });
 
 // Fetch Movie Quote
-fetch("https://api.themoviedb.org/3/movie/popular?api_key=YOUR_API_KEY")
+fetch("movies.json")
     .then(response => response.json())
     .then(data => {
-        document.getElementById("quote").innerText = data.results[Math.floor(Math.random() * data.results.length)].overview;
+        document.getElementById("quote").innerText = data.movieQuotes[Math.floor(Math.random() * data.movieQuotes.length)];
     });
