@@ -30,5 +30,7 @@ chrome.storage.local.get(["timezones", "images", "showGUID"], (data) => {
 fetch("movies.json")
     .then(response => response.json())
     .then(data => {
-        document.getElementById("quote").innerText = data.movieQuotes[Math.floor(Math.random() * data.movieQuotes.length)];
+        quote = data.movieQuotes[Math.floor(Math.random() * data.movieQuotes.length)].split("\"");        
+        document.getElementById("quote").innerText = quote[1];
+        document.getElementById("film").innerText = quote[2];
     });
