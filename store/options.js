@@ -17,6 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Timezone Management
+document.getElementById("set-timezone").addEventListener("click", () => {
+    let selectedZone = document.getElementById("timezone-set").value;
+    chrome.storage.local.get("timezone-current", (data) => {
+        chrome.storage.local.set({ selectedZone });
+    });
+});
 document.getElementById("add-timezone").addEventListener("click", () => {
     let selectedZone = document.getElementById("timezone-select").value;
     chrome.storage.local.get("timezones", (data) => {
