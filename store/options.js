@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // Timezone Management
 document.getElementById("set-timezone").addEventListener("click", () => {
     let selectedZone = document.getElementById("timezone-set").value;
-    chrome.storage.local.get("timezone-current", (data) => {
-        chrome.storage.local.set({ selectedZone });
+    chrome.storage.local.get("timezonecurrent", (data) => {
+        chrome.storage.local.set({ "timezonecurrent" : selectedZone });
     });
 });
 document.getElementById("add-timezone").addEventListener("click", () => {

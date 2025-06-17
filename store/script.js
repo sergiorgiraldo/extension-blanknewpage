@@ -1,8 +1,13 @@
-document.getElementById("current-time").innerText = new Date().toLocaleString();
 // Load settings from storage
-chrome.storage.local.get(["timezones", "images", "showGUID"], (data) => {
+chrome.storage.local.get(["timezones", "timezonecurrent", "images", "showGUID"], (data) => {
 
     // Timezones
+    const displayToday = document.getElementById("current-time");
+    if (data.timezonecurrent) {
+            let date = new Intl.DateTimeFormat("en-US", { timeZone: data.timezonecurrent, timeStyle: "short", hour12: false}).format(new Date());
+            displayToday.textContent += `${data.timezonecurrent}: ${date}\r\n`;
+    }
+
     const display = document.getElementById("timezone-display");
     
     if (data.timezones) {
