@@ -1,5 +1,5 @@
 // Load settings from storage
-chrome.storage.local.get(["timezones", "timezonecurrent", "images", "showGUID"], (data) => {
+chrome.storage.local.get(["weathercurrent", "timezones", "timezonecurrent", "images", "showGUID"], (data) => {
 
     // Timezones
     const displayToday = document.getElementById("current-time");
@@ -17,6 +17,18 @@ chrome.storage.local.get(["timezones", "timezonecurrent", "images", "showGUID"],
         });
     }
     
+    if (data.weathercurrent){
+        let zone = data.weathercurrent.split('/')[1];
+        fetch(`https://wttr.in/${zone}?format=%l:+%C+%t(%f)`)
+            .then((response) => response.text())
+            .then((data) => {
+                document.getElementById("wthr").innerHTML += "<br />" + data;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
     // GUID Toggle
     console.log(data.showGUID);
     const guidContainer = document.getElementById("guid-container");

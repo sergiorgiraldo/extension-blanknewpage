@@ -12,8 +12,8 @@
         }
         .container {
             display: flex;
-            width: 100vw;
-            height: 100vh;
+            width: 90vw;
+            height: 90vh;
         }
         .left { width: 25%; padding: 10px; }
         .middle { width: 45%; display: flex; justify-content: center; align-items: center; }
@@ -28,7 +28,6 @@
         #timezone-display{
             font-size: 1.5em;
             color:darkseagreen;
-            padding-left: 1em;
             margin-bottom: 2em;
             white-space: pre;
         }
@@ -36,6 +35,7 @@
             font-size: 1.5em;
             font-style: italic;
             color:#AACCFF;
+            margin-top:5em;
         }
         #quote, #film {
             font-size: 1.5em;
@@ -52,14 +52,18 @@
 <body>
     <div class="container">
         <div class="left">
-            <div id="current-time"></div>
-            <div id="timezone-display"></div>
+            <div>
+                <span id="current-time"></span>
+                <p />
+                <span id="timezone-display"></span>
+            </div>
             <div id="guid-container"></div>
         </div>
         <div class="middle">
             <img id="random-image" src="">
         </div>
         <div class="right">
+            <div id="wthr"></div>
             <div id="quote"></div>
             <div>
                 :: <span title="select to see the movie" id="film"></span> ::

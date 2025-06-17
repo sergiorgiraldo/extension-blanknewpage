@@ -1,9 +1,17 @@
 // Load stored settings on page load
 document.addEventListener("DOMContentLoaded", () => {
-    chrome.storage.local.get(["timezones", "images", "showGUID"], (data) => {
+    chrome.storage.local.get(["weathercurrent", "timezones", "timezonecurrent", "images", "showGUID"], (data) => {
         // Timezones
         if (data.timezones) {
             data.timezones.forEach(zone => addTimezoneToList(zone));
+        }
+        if (data.timezonecurrent) {
+            document.getElementById("timezone-current").innerText = data.timezonecurrent;
+        }
+
+        //Weather
+        if (data.weathercurrent) {
+            document.getElementById("weather-current").innerText = data.weathercurrent;
         }
 
         // Images
@@ -16,15 +24,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Weather Management
+document.getElementById("btnSetWeather").addEventListener("click", () => {
+    let selectedWeather = document.getElementById("selWeather").value;
+    chrome.storage.local.get("weathercurrent", (data) => {
+        chrome.storage.local.set({ "weathercurrent" : selectedWeather });
+    });
+    document.getElementById("weather-current").innerText = selectedWeather;
+});
+
 // Timezone Management
-document.getElementById("set-timezone").addEventListener("click", () => {
-    let selectedZone = document.getElementById("timezone-set").value;
+document.getElementById("btnSetTimezone").addEventListener("click", () => {
+    let selectedZone = document.getElementById("selSetTimezone").value;
     chrome.storage.local.get("timezonecurrent", (data) => {
         chrome.storage.local.set({ "timezonecurrent" : selectedZone });
     });
+    document.getElementById("timezone-current").innerText = selectedZone;
 });
-document.getElementById("add-timezone").addEventListener("click", () => {
-    let selectedZone = document.getElementById("timezone-select").value;
+document.getElementById("btnAddTimezone").addEventListener("click", () => {
+    let selectedZone = document.getElementById("selAddTimezone").value;
     chrome.storage.local.get("timezones", (data) => {
         let timezones = data.timezones || [];
         if (!timezones.includes(selectedZone)) {
@@ -57,11 +75,6 @@ document.getElementById("upload-image").addEventListener("change", (event) => {
         };
         reader.readAsDataURL(file);
     }
-});
-
-document.getElementById("delete-image").addEventListener("click", () => {
-    chrome.storage.local.set({ images: [] });
-    document.getElementById("image-list").innerHTML = "";
 });
 
 function addImageToList(imgSrc) {
