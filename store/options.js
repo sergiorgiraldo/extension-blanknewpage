@@ -57,7 +57,20 @@ function addTimezoneToList(zone) {
     let list = document.getElementById("timezone-list");
     let item = document.createElement("li");
     item.textContent = zone;
+    item.addEventListener("click", (event) => { removeTimezone(event, zone); });
     list.appendChild(item);
+}
+
+function removeTimezone(event, zone){
+    event.target.remove();
+    chrome.storage.local.get("timezones", (data) => {
+        let timezones = data.timezones || [];
+        let index = timezones.indexOf(zone);
+        if (index !== -1) {
+            timezones.splice(index, 1);
+        }
+        chrome.storage.local.set({ timezones });
+    });
 }
 
 // Image Management

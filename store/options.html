@@ -9,6 +9,8 @@
 				font-family: verdana;
 				font-size: medium;
 				padding: 20px;
+				margin-left: 20%;
+				margin-right: 20%;
 			}
 			h1,
 			h3 {
@@ -24,7 +26,8 @@
 		</style>
 	</head>
 	<body>
-		<h1>Settings</h1>
+		<h1>My Homepage - Options</h1>
+		<hr />
 
 		<h3>Set Current Timezone</h3>
 		<select id="selSetTimezone">
@@ -1190,7 +1193,7 @@
 		<button id="btnSetTimezone">Set Timezone</button>
 		<p id="timezone-current"></p>
 
-		<h3>Manage Additional Timezones</h3>
+		<h3>Set Additional Timezones</h3>
 		<select id="selAddTimezone">
 			<option value="Africa/Abidjan">Africa/Abidjan (+00:00 GMT)</option>
 			<option value="Africa/Accra">Africa/Accra (+00:00 GMT)</option>
@@ -2352,6 +2355,7 @@
 			<option value="Zulu">Zulu (+00:00 UTC)</option>
 		</select>
 		<button id="btnAddTimezone">Add Timezone</button>
+		<p/><i>click to remove</i>
 		<ul id="timezone-list"></ul>
 
 		<h3>Choose Weather Zone</h3>
@@ -3522,10 +3526,10 @@
 		<input type="file" id="upload-image" />
 		<ul id="image-list"></ul>
 
-		<h3>Show GUID</h3>
+		<h3>GUID</h3>
 		<label>
 			<input type="checkbox" id="toggle-guid" />
-			Enable GUID
+			GUID's are a mystery, show me one of them
 		</label>
 
 		<script src="options.js"></script>
