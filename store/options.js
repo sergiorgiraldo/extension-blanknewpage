@@ -97,8 +97,21 @@ function addImageToList(imgSrc) {
     img.src = imgSrc;
     img.style.width = "50px";
     img.style.height = "50px";
+    item.addEventListener("click", (event) => { removeImage(event, imgSrc); });
     item.appendChild(img);
     list.appendChild(item);
+}
+
+function removeImage(event, src){
+    event.target.remove();
+    chrome.storage.local.get("images", (data) => {
+        let images = data.images || [];
+        let index = images.indexOf(src);
+        if (index !== -1) {
+            images.splice(index, 1);
+        }
+        chrome.storage.local.set({ images });
+    });
 }
 
 // GUID Toggle
