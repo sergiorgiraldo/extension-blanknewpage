@@ -24,13 +24,16 @@
 				margin-top: 5px;
 			}
 		</style>
+		<script src="jquery-3.6.4.min.js"></script>
+		<script src="select2.min.js"></script>
+		<link href="select2.min.css" rel="stylesheet" />
 	</head>
 	<body>
 		<h1>My Homepage - Options</h1>
 		<hr />
 
 		<h3>Set Current Timezone</h3>
-		<select id="selSetTimezone">
+		<select id="selSetTimezone" name="selSetTimezone" class="js-example-basic-single">
 			<option value="Africa/Abidjan">Africa/Abidjan (+00:00 GMT)</option>
 			<option value="Africa/Accra">Africa/Accra (+00:00 GMT)</option>
 			<option value="Africa/Addis_Ababa">
@@ -1194,7 +1197,7 @@
 		<p id="timezone-current"></p>
 
 		<h3>Set Additional Timezones</h3>
-		<select id="selAddTimezone">
+		<select id="selAddTimezone" name="selAddTimezone" class="js-example-basic-single">
 			<option value="Africa/Abidjan">Africa/Abidjan (+00:00 GMT)</option>
 			<option value="Africa/Accra">Africa/Accra (+00:00 GMT)</option>
 			<option value="Africa/Addis_Ababa">
@@ -2359,7 +2362,7 @@
 		<ul id="timezone-list"></ul>
 
 		<h3>Choose Weather Zone</h3>
-		<select id="selWeather">
+		<select id="selWeather" name="selWeather" class="js-example-basic-single">
 			<option value="Africa/Abidjan">Africa/Abidjan</option>
 			<option value="Africa/Accra">Africa/Accra</option>
 			<option value="Africa/Addis_Ababa">
