@@ -7,6 +7,9 @@ chrome.storage.local.get(["weathercurrent", "timezones", "timezonecurrent", "ima
             let date = new Intl.DateTimeFormat("en-US", { timeZone: data.timezonecurrent, timeStyle: "short", hour12: false}).format(new Date());
             displayToday.textContent += `${data.timezonecurrent}: ${date}\r\n`;
     }
+    else{
+        document.getElementById("reminder").style.display = "block";
+    }
 
     const display = document.getElementById("timezone-display");
     
