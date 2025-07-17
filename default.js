@@ -48,7 +48,8 @@ function getImage() {
 		"26.jpg",
 		"27.jpg",
 		"28.jpg",
-		"29.jpg"
+		"29.jpg",
+		"30.jpg"
 	];
 
 	const randomIndex = Math.floor(Math.random() * images.length);
