@@ -68,7 +68,7 @@ function updateClock() {
 
 	document.getElementById(
 		"clock"
-	).innerHTML = `${now.toLocaleDateString()}<br/>${hours}:${minutes}:${seconds} | CET`;
+	).innerHTML = `${now.toLocaleDateString()}<br/>${hours}:${minutes}:${seconds} | CEST`;
 
 	let options = {
 		timeZone: "America/Los_Angeles",
