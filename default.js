@@ -49,7 +49,9 @@ function getImage() {
 		"27.jpg",
 		"28.jpg",
 		"29.jpg",
-		"30.jpg"
+		"30.jpg",
+		"31.jpg",
+		"32.jpg"
 	];
 
 	const randomIndex = Math.floor(Math.random() * images.length);
@@ -68,7 +70,7 @@ function updateClock() {
 
 	document.getElementById(
 		"clock"
-	).innerHTML = `${now.toLocaleDateString()}<br/>${hours}:${minutes}:${seconds} | CEST`;
+	).innerHTML = `${now.toLocaleDateString()}<br/>${hours}:${minutes}:${seconds} | CET`;
 
 	let options = {
 		timeZone: "America/Los_Angeles",
